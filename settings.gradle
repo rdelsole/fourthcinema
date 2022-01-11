@@ -1,3 +1,5 @@
 rootProject.name = 'fourthcinema'
 include 'application'
 include 'web'
+include 'repository'
+
