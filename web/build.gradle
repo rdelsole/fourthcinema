@@ -1,4 +1,7 @@
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator:$spring_boot_version")
     implementation("org.springframework.boot:spring-boot-starter-web:$spring_boot_version")
+
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.4'
+
 }
