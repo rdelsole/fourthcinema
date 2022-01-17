@@ -30,6 +30,15 @@ subprojects() {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version")
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation group: 'org.springframework', name: 'spring-context', version: '5.3.14'
+
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
+        testImplementation("org.springframework.boot:spring-boot-starter-test:$spring_boot_version")
+        testImplementation("com.ninja-squad:springmockk:3.0.1")
+        testImplementation group: 'io.mockk', name: 'mockk', version: '1.12.2'
+
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
@@ -43,5 +52,9 @@ subprojects() {
     tasks.compileJava {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
+    }
+
+    test {
+        useJUnitPlatform()
     }
 }

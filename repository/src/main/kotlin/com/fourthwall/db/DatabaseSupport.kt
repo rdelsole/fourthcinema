@@ -1,5 +1,6 @@
 package com.fourthwall.db
 
+import org.hsqldb.util.DatabaseManagerSwing
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.annotation.Profile
@@ -31,6 +32,7 @@ class DatabaseSupport(
     fun init() {
         System.setProperty("java.awt.headless", "false")
         // Uncomment the below line to open a GUI to navigate on memory database
-        // DatabaseManagerSwing.main(arrayOf("--url", jdbcUrl, "--noexit"))
+        DatabaseManagerSwing.main(arrayOf("--url", jdbcUrl, "--noexit"))
+        println()
     }
 }

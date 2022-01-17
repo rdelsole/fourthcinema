@@ -1,6 +1,7 @@
 package com.fourthwall.repository.model
 
 import java.math.BigDecimal
+import java.sql.Time
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -17,7 +18,7 @@ data class MovieRoomSchedule(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    val id: Long,
+    val id: Long?,
 
     @OneToOne
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
@@ -31,5 +32,5 @@ data class MovieRoomSchedule(
     val price: BigDecimal,
 
     @Column
-    val hour: Int
+    val hour: Time
 )
