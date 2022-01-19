@@ -10,7 +10,7 @@ import javax.persistence.Table
  */
 @Entity
 @Table(name = "rooms")
-data class Room(
+data class RoomEntity(
 
     @Id
     @Column(name = "number")

@@ -3,9 +3,9 @@ package com.fourthwall.repository
 import com.fourthwall.repository.jpa.MovieJPARepository
 import com.fourthwall.repository.jpa.MovieRoomScheduleJPARepository
 import com.fourthwall.repository.jpa.RoomJPARepository
-import com.fourthwall.repository.model.Movie
-import com.fourthwall.repository.model.MovieRoomSchedule
-import com.fourthwall.repository.model.Room
+import com.fourthwall.repository.model.MovieEntity
+import com.fourthwall.repository.model.MovieRoomScheduleEntity
+import com.fourthwall.repository.model.RoomEntity
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,7 +15,7 @@ import java.sql.Time
 import java.time.LocalTime
 
 @DataJpaTest
-class MovieRoomScheduleHSQLDBRepositoryTest {
+class MovieEntityRoomScheduleEntityHSQLDBRepositoryTestEntity {
 
     @Autowired
     private lateinit var movieRoomScheduleJPARepository: MovieRoomScheduleJPARepository
@@ -43,34 +43,34 @@ class MovieRoomScheduleHSQLDBRepositoryTest {
 
         val movieRoomScheduleId = 25L
 
-        val movie = Movie(
+        val movieEntity = MovieEntity(
             id = movieId,
             imdbId = "test",
             title = movieTitle
         )
 
-        val room = Room(
+        val roomEntity = RoomEntity(
             number = roomNumber,
             capacity = 85
         )
 
-        val movieRoomSchedule = MovieRoomSchedule(
+        val movieRoomScheduleEntity = MovieRoomScheduleEntity(
             id = movieRoomScheduleId,
             price = price,
             hour = Time.valueOf(LocalTime.of(14, 25, 18)),
-            movie = movie,
-            room = room
+            movie = movieEntity,
+            room = roomEntity
         )
-        movieJPARepository.save(movie)
-        roomJPARepository.save(room)
-        movieRoomScheduleJPARepository.save(movieRoomSchedule)
+        movieJPARepository.save(movieEntity)
+        roomJPARepository.save(roomEntity)
+        movieRoomScheduleJPARepository.save(movieRoomScheduleEntity)
 
         val movieFound = movieRoomScheduleHSQLDBRepository.findMovieTimesByMovieId(movieId)
 
         Assertions.assertTrue(movieFound != null)
         Assertions.assertTrue(movieFound!!.id == movieId)
-        Assertions.assertTrue(movieFound.moviePriceRoom.size == 1)
-        Assertions.assertTrue(movieFound.moviePriceRoom.first().price.equals(price))
-        Assertions.assertTrue(movieFound.moviePriceRoom.first().roomDetails.number == roomNumber)
+        Assertions.assertTrue(movieFound.moviePriceRoom!!.size == 1)
+        Assertions.assertTrue(movieFound.moviePriceRoom!!.first().price.equals(price))
+        Assertions.assertTrue(movieFound.moviePriceRoom!!.first().roomDetails.number == roomNumber)
     }
 }

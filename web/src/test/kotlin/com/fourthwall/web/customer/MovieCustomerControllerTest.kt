@@ -3,7 +3,9 @@ package com.fourthwall.web.customer
 import com.fourthwall.entity.Movie
 import com.fourthwall.entity.MoviePriceRoomTime
 import com.fourthwall.entity.Room
+import com.fourthwall.usecase.GetMovieDetails
 import com.fourthwall.usecase.ListMovieTimes
+import com.fourthwall.usecase.SaveMovieRating
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.junit.jupiter.api.Test
@@ -25,6 +27,12 @@ class MovieCustomerControllerTest(
 
     @MockkBean
     private lateinit var listMoviesTime: ListMovieTimes
+
+    @MockkBean
+    private lateinit var saveMovieRating: SaveMovieRating
+
+    @MockkBean
+    private lateinit var getMovieDetails: GetMovieDetails
 
     private val movieId = 55L
     private val movieTitle = "Simple movie"
@@ -56,6 +64,7 @@ class MovieCustomerControllerTest(
     private fun buildSimpleMovie() = Movie(
         id = movieId,
         title = movieTitle,
+        omdbId = "someId",
         moviePriceRoom = listOf(
             MoviePriceRoomTime(
                 price = BigDecimal("32.99"),

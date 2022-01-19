@@ -19,7 +19,7 @@ import javax.sql.DataSource
 class DatabaseSupport(
     @Value("\${spring.datasource.url}")
     private val jdbcUrl: String,
-    private val dataSource: DataSource
+    private val dataSource: DataSource,
 ) {
 
     @EventListener(ApplicationReadyEvent::class)
@@ -30,9 +30,9 @@ class DatabaseSupport(
 
     @PostConstruct
     fun init() {
-        System.setProperty("java.awt.headless", "false")
-        // Uncomment the below line to open a GUI to navigate on memory database
-        DatabaseManagerSwing.main(arrayOf("--url", jdbcUrl, "--noexit"))
-        println()
+        if ("debug".equals(System.getenv("spring_profiles_active"), true)) {
+            System.setProperty("java.awt.headless", "false")
+            DatabaseManagerSwing.main(arrayOf("--url", jdbcUrl, "--noexit"))
+        }
     }
 }

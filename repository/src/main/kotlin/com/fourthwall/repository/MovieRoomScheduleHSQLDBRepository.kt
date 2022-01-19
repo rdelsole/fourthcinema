@@ -27,7 +27,13 @@ class MovieRoomScheduleHSQLDBRepository(
                     )
                 )
             }
-            Movie(movieRoomScheduleList.first().movie.id, movieRoomScheduleList.first().movie.title, movieRoomSchedules)
+            Movie(
+                movieRoomScheduleList.first().movie.id!!,
+                movieRoomScheduleList.first().movie.title!!,
+                movieRoomScheduleList.first().movie.imdbId!!,
+                movieRoomSchedules,
+                null, null
+            )
         }
     }
 }
