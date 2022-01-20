@@ -1,8 +1,8 @@
-package com.fourthwall.usecase.impl
+package com.fourthwall.usecase.movie.impl
 
 import com.fourthwall.entity.Movie
 import com.fourthwall.repository.MovieRoomScheduleRepository
-import com.fourthwall.usecase.ListMovieTimes
+import com.fourthwall.usecase.movie.ListMovieTimes
 import org.springframework.stereotype.Service
 
 @Service

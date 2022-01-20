@@ -1,4 +1,4 @@
-package com.fourthwall.usecase
+package com.fourthwall.usecase.movie
 
 import com.fourthwall.entity.Movie
 

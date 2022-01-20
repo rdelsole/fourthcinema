@@ -30,7 +30,8 @@ subprojects() {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version")
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
-        implementation group: 'org.springframework', name: 'spring-context', version: '5.3.14'
+        implementation("org.springframework:spring-context:$spring_version")
+        implementation("org.springframework:spring-tx:$spring_version")
 
         testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")

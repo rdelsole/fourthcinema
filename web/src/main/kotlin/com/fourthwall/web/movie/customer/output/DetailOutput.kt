@@ -1,4 +1,4 @@
-package com.fourthwall.web.customer.output
+package com.fourthwall.web.movie.customer.output
 
 import com.fourthwall.entity.OmdbDetail
 

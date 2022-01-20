@@ -1,4 +1,4 @@
-package com.fourthwall.web.customer.output
+package com.fourthwall.web.movie.customer.output
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -10,6 +10,8 @@ import java.time.LocalTime
 
 data class MoviePriceTimeRoomOutput(
 
+    val id: Long,
+
     @JsonProperty("price")
     @JsonSerialize(using = MoneySerializer::class)
     val price: BigDecimal,
@@ -20,6 +22,7 @@ data class MoviePriceTimeRoomOutput(
     companion object {
         fun fromMoviePriceRoomTime(moviePriceRoomTime: MoviePriceRoomTime) =
             MoviePriceTimeRoomOutput(
+                moviePriceRoomTime.id!!,
                 moviePriceRoomTime.price,
                 moviePriceRoomTime.time,
                 RoomOutput(

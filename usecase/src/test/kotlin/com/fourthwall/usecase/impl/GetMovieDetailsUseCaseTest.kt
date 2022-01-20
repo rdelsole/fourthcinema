@@ -9,6 +9,7 @@ import com.fourthwall.exception.OmdbServerException
 import com.fourthwall.repository.MovieOmdbDetailsRepository
 import com.fourthwall.repository.MovieRatingRepository
 import com.fourthwall.repository.MovieRoomScheduleRepository
+import com.fourthwall.usecase.movie.impl.GetMovieDetailsUseCase
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -106,7 +107,7 @@ class GetMovieDetailsUseCaseTest {
     }
 
     private fun createMoviePriceRoomTime() = MoviePriceRoomTime(
-        BigDecimal.TEN, LocalTime.of(12, 0, 0), Room(1, 20)
+        1L, BigDecimal.TEN, LocalTime.of(12, 0, 0), Room(1, 20)
     )
 
     private fun buildMovieRating(movieId: Long) = listOf(

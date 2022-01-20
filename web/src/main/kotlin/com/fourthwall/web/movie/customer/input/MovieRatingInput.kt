@@ -1,4 +1,4 @@
-package com.fourthwall.web.customer.input
+package com.fourthwall.web.movie.customer.input
 
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min

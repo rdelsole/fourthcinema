@@ -1,7 +1,7 @@
-package com.fourthwall.usecase.impl
+package com.fourthwall.usecase.movie.impl
 
 import com.fourthwall.repository.MovieRatingRepository
-import com.fourthwall.usecase.SaveMovieRating
+import com.fourthwall.usecase.movie.SaveMovieRating
 import org.springframework.stereotype.Service
 
 @Service

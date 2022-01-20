@@ -3,7 +3,6 @@ package com.fourthwall.db
 import org.hsqldb.util.DatabaseManagerSwing
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.event.ApplicationReadyEvent
-import org.springframework.context.annotation.Profile
 import org.springframework.context.event.EventListener
 import org.springframework.core.io.ClassPathResource
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator
@@ -15,7 +14,6 @@ import javax.sql.DataSource
  * This class is just a support for development and should not be used in production environment
  */
 @Component
-@Profile("!prd")
 class DatabaseSupport(
     @Value("\${spring.datasource.url}")
     private val jdbcUrl: String,
@@ -24,8 +22,11 @@ class DatabaseSupport(
 
     @EventListener(ApplicationReadyEvent::class)
     fun populateDatabase() {
-        val resourceDatabasePopulator = ResourceDatabasePopulator(false, false, "UTF-8", ClassPathResource("support/data.sql"))
-        resourceDatabasePopulator.execute(dataSource)
+        if (!"test".equals(System.getenv("spring_profiles_active"), true)) {
+            val resourceDatabasePopulator =
+                ResourceDatabasePopulator(false, false, "UTF-8", ClassPathResource("support/data.sql"))
+            resourceDatabasePopulator.execute(dataSource)
+        }
     }
 
     @PostConstruct

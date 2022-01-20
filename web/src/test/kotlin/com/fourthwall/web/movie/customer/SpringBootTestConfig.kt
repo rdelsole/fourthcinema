@@ -1,4 +1,4 @@
-package com.fourthwall.web.customer
+package com.fourthwall.web.movie.customer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 

@@ -1,11 +1,11 @@
-package com.fourthwall.usecase.impl
+package com.fourthwall.usecase.movie.impl
 
 import com.fourthwall.entity.Movie
 import com.fourthwall.entity.MovieRating
 import com.fourthwall.repository.MovieOmdbDetailsRepository
 import com.fourthwall.repository.MovieRatingRepository
 import com.fourthwall.repository.MovieRoomScheduleRepository
-import com.fourthwall.usecase.GetMovieDetails
+import com.fourthwall.usecase.movie.GetMovieDetails
 import org.springframework.stereotype.Service
 
 @Service

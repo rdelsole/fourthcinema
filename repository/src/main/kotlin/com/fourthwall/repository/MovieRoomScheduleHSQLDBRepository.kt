@@ -5,6 +5,9 @@ import com.fourthwall.entity.MoviePriceRoomTime
 import com.fourthwall.entity.Room
 import com.fourthwall.repository.jpa.MovieRoomScheduleJPARepository
 import org.springframework.stereotype.Component
+import java.math.BigDecimal
+import java.sql.Time
+import java.time.LocalTime
 
 @Component
 class MovieRoomScheduleHSQLDBRepository(
@@ -19,6 +22,7 @@ class MovieRoomScheduleHSQLDBRepository(
 
             val movieRoomSchedules = movieRoomSchedulesModel.map {
                 MoviePriceRoomTime(
+                    it.id,
                     it.price,
                     it.hour.toLocalTime(),
                     Room(
@@ -35,5 +39,13 @@ class MovieRoomScheduleHSQLDBRepository(
                 null, null
             )
         }
+    }
+
+    override fun updateMovieTime(movieId: Long, movieRoomScheduleId: Long, time: LocalTime): Int {
+        return movieRoomScheduleJPARepository.updateMovieTime(movieId, movieRoomScheduleId, Time.valueOf(time))
+    }
+
+    override fun updateMoviePrice(movieId: Long, movieRoomScheduleId: Long, price: BigDecimal): Int {
+        return movieRoomScheduleJPARepository.updateMoviePrice(movieId, movieRoomScheduleId, price)
     }
 }
